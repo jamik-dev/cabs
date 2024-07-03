@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400..900&family=Roboto:opsz,wght@8..144,100..1000&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles here */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-golos text-black bg-white;
+}
+
+@layer components {
+  .wrapper {
+    @apply container mx-auto px-4 max-w-[1440px];
+  }
+}
+
+* {
+  @apply box-border m-0 p-0 text-inherit font-inherit;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #eb5757;
+  border-radius: 10px;
+}
