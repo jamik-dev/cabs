@@ -1,8 +1,8 @@
 <template>
-  <header id="header" :class="[screenScrolled ? 'bg-white text-black' : 'bg-transparent text-white']" class="fixed top-0 z-10 backdrop-blur-2xl w-full duration-200">
+  <header id="header" :class="[screenScrolled ? 'bg-white text-black' : 'bg-transparent text-white']" class="fixed top-0 z-[20] backdrop-blur-2xl w-full duration-200">
     <div class="wrapper flex sm:flex-col gap-y-4 lg:flex-row sm:items-center justify-between py-4 sm:py-8">
       <div class="flex items-center gap-6">
-        <ULink @click="isMenuOpen = false" to="/" class="font-black :text-base lg:text-xl uppercase font-big shrink-0"> Central Asia Container Service </ULink>
+        <ULink @click="isMenuOpen = false" to="/" class="font-black :text-base lg:text-xl uppercase font-big shrink-0">CENTRAL ASIA BUSINESS SERVICE</ULink>
         <div class="w-[1px] hidden lg:block bg-grey-4 h-6 shrink-0"></div>
         <nav class="hidden sm:block">
           <ul class="flex items-center gap-10">
@@ -69,6 +69,15 @@
 <script setup>
 const isMenuOpen = ref(false);
 const screenScrolled = ref(false);
+
+watch(isMenuOpen, (value) => {
+  if (value) {
+    document.documentElement.style.overflow = 'hidden';
+  } else {
+    document.documentElement.style.overflow = "auto";
+  }
+});
+
 // eventListeners
 onMounted(() => {
   if (process.client) {

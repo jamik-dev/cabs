@@ -21,7 +21,7 @@
             @click="isModalOpen = false"
           />
         </div>
-        <div class="h-[525px] overflow-hidden rounded-lg">
+        <div class="h-[300px] sm:h-[400px] md:h-[525px] overflow-hidden rounded-lg">
           <img class="w-full h-full object-cover" src="~/assets/images/modal.png" alt="modal" />
         </div>
         <div class="space-y-4">
@@ -55,7 +55,7 @@
         class="flex items-center justify-center min-h-screen bg-[url('~/assets/images/hero.png')] bg-no-repeat bg-center bg-cover relative before:absolute before:pointer-events-none before:left-0 before:top-0 before:h-full before:w-full before:z-1 before:bg-black before:opacity-50"
       >
         <div class="flex flex-col gap-6 z-[2]">
-          <p @click="isMenuOpen = false" to="/" class="font-black text-center text-white text-base lg:text-xl uppercase font-big shrink-0">Central Asia Container Service</p>
+          <p @click="isMenuOpen = false" to="/" class="font-black text-center text-white text-base lg:text-xl uppercase font-big shrink-0">CENTRAL ASIA BUSINESS SERVICE</p>
           <h1 class="text-white text-center text-4xl md:text-6xl xl:text-[80px] max-w-[90%] md:max-w-[80%] lg:max-w-[60%] mx-auto font-big font-extrabold uppercase leading-[120%]">
             We offer a full range of services to support your business
           </h1>
@@ -449,7 +449,7 @@
                   </div>
                 </div>
               </div>
-              <ULink to="/" class="font-black text-base lg:text-lg uppercase font-big mt-10 text-blue"> Central Asia Container Service </ULink>
+              <ULink to="/" class="font-black text-base lg:text-lg uppercase font-big mt-10 text-blue">CENTRAL ASIA BUSINESS SERVICE</ULink>
             </div>
           </div>
         </div>
@@ -461,12 +461,12 @@
 <script setup>
 useHead(() => {
   return {
-    title: 'Central Asia Container Service',
+    title: 'Central Asia Business Service',
     meta: [
       {
         hid: 'description',
         name: 'description',
-        content: 'Central Asia Container Service'
+        content: 'CENTRAL ASIA BUSINESS SERVICE'
       }
     ]
   };
