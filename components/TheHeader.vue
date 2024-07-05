@@ -24,12 +24,7 @@
         </div>
       </div>
       <div class="sm:hidden">
-        <UButton
-          @click="isMenuOpen = !isMenuOpen"
-          size="xl"
-          :ui="{ padding: { xl: 'px-2 sm:px-4 py-3 sm:py-4' }, rounded: 'rounded-xl' }"
-          variant="soft"
-        >
+        <UButton @click="isMenuOpen = !isMenuOpen" size="xl" :ui="{ padding: { xl: 'px-2 sm:px-4 py-3 sm:py-4' }, rounded: 'rounded-xl' }" variant="soft">
           <template #trailing>
             <label class="hamburger select-none pointer-events-none">
               <input v-model="isMenuOpen" type="checkbox" />
@@ -74,46 +69,49 @@ watch(isMenuOpen, (value) => {
   if (value) {
     document.documentElement.style.overflow = 'hidden';
   } else {
-    document.documentElement.style.overflow = "auto";
+    document.documentElement.style.overflow = 'auto';
   }
 });
 
 // eventListeners
 onMounted(() => {
-  if (process.client) {
-    const header = document.querySelector('#header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 108) {
-        header.classList.add('shadow-lg');
-      } else if (window.scrollY <= 108) {
-        header.classList.remove('shadow-lg');
-      }
+  const header = document.querySelector('#header');
 
-      if (window.scrollY > window.innerHeight - 120) {
-        screenScrolled.value = true;
-      } else {
-        screenScrolled.value = false;
-      }
-    });
+  if (window.scrollY > window.innerHeight - 120) {
+    screenScrolled.value = true;
+  } else {
+    screenScrolled.value = false;
   }
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 108) {
+      header.classList.add('shadow-lg');
+    } else if (window.scrollY <= 108) {
+      header.classList.remove('shadow-lg');
+    }
+
+    if (window.scrollY > window.innerHeight - 120) {
+      screenScrolled.value = true;
+    } else {
+      screenScrolled.value = false;
+    }
+  });
 });
 
 onUnmounted(() => {
-  if (process.client) {
-    window.removeEventListener('scroll', () => {
-      if (window.scrollY > 108) {
-        header.classList.add('shadow-lg');
-      } else if (window.scrollY <= 108) {
-        header.classList.remove('shadow-lg');
-      }
+  window.removeEventListener('scroll', () => {
+    if (window.scrollY > 108) {
+      header.classList.add('shadow-lg');
+    } else if (window.scrollY <= 108) {
+      header.classList.remove('shadow-lg');
+    }
 
-      if (window.scrollY > window.innerHeight - 120) {
-        screenScrolled.value = true;
-      } else {
-        screenScrolled.value = false;
-      }
-    });
-  }
+    if (window.scrollY > window.innerHeight - 120) {
+      screenScrolled.value = true;
+    } else {
+      screenScrolled.value = false;
+    }
+  });
 });
 </script>
 
@@ -150,24 +148,23 @@ onUnmounted(() => {
 
 .hamburger .line {
   fill: none;
-  stroke: #1878F3;
+  stroke: #1878f3;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 2;
   /* Define the transition for transforming the Stroke */
-  transition: stroke-dasharray 300ms cubic-bezier(0.4, 0, 0.2, 1),
-    stroke-dashoffset 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: stroke-dasharray 300ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hamburger .line-top-bottom {
   stroke-dasharray: 12 63;
 }
 
-.hamburger input:checked+svg {
+.hamburger input:checked + svg {
   transform: rotate(-45deg);
 }
 
-.hamburger input:checked+svg .line-top-bottom {
+.hamburger input:checked + svg .line-top-bottom {
   stroke-dasharray: 20 300;
   stroke-dashoffset: -32.42;
 }
