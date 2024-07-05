@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default defineNuxtPlugin((nuxtApp) => {
   const axiosInstance = axios.create({
-    baseURL: process.env.API_BASE_URL || 'https://e-shop.ndc.uz/api',
+    baseURL: process.env.API_BASE_URL || 'https://admin.verel-auto.uz',
   });
 
   axiosInstance.interceptors.request.use((config) => {

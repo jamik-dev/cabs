@@ -21,15 +21,13 @@
             @click="isModalOpen = false"
           />
         </div>
-        <div class="h-[525px] overflow-hidden rounded-lg">
-          <img class="w-full h-full object-cover" src="~/assets/images/modal.png" alt="modal" />
+        <div class="h-[300px] sm:h-[400px] md:h-[525px] overflow-hidden rounded-lg">
+          <img class="w-full h-full object-cover" :src="`${useRuntimeConfig().public.BASE_URL}/storage/${service.photo}`" :alt="service.title.en" />
         </div>
         <div class="space-y-4">
-          <h4 class="text-xl md:text-3xl font-bold font-big uppercase">Organisation of company presentations</h4>
-          <p class="text-sm md:text-base text-grey-0">
-            Our company cooperates with experienced transport companies specialising in EU-Uzbekistan and Asia-Uzbekistan routes. We ensure reliable and timely delivery of cargo,
-            which contributes to the smooth operation of your business. Our partners offer various modes of transport, including road, rail and air to meet any customer needs.
-          </p>
+          <h4 class="text-xl md:text-3xl font-bold font-big uppercase">{{ service.title.en }}</h4>
+          <div v-html="service.descriptions.en" class="text-sm md:text-base text-grey-0">
+          </div>
         </div>
         <div class="p-5 md:p-10 bg-blue text-white rounded-lg flex flex-col gap-y-4 sm:flex-row justify-between sm:items-center">
           <div class="space-y-2">
@@ -55,7 +53,7 @@
         class="flex items-center justify-center min-h-screen bg-[url('~/assets/images/hero.png')] bg-no-repeat bg-center bg-cover relative before:absolute before:pointer-events-none before:left-0 before:top-0 before:h-full before:w-full before:z-1 before:bg-black before:opacity-50"
       >
         <div class="flex flex-col gap-6 z-[2]">
-          <p @click="isMenuOpen = false" to="/" class="font-black text-center text-white text-base lg:text-xl uppercase font-big shrink-0">Central Asia Container Service</p>
+          <p @click="isMenuOpen = false" to="/" class="font-black text-center text-white text-base lg:text-xl uppercase font-big shrink-0">CENTRAL ASIA BUSINESS SERVICE</p>
           <h1 class="text-white text-center text-4xl md:text-6xl xl:text-[80px] max-w-[90%] md:max-w-[80%] lg:max-w-[60%] mx-auto font-big font-extrabold uppercase leading-[120%]">
             We offer a full range of services to support your business
           </h1>
@@ -69,11 +67,14 @@
             <p>About company</p>
             <h2 class="uppercase font-big text-xl lg:text-3xl font-extrabold mt-1">CENTRAL ASIA BUSINESS SERVICE</h2>
             <p class="text-base lg:text-xl mt-6 text-grey-0">
-              CENTRAL ASIA BUSINESS SERVICE, founded in 2021, offers a full range of services to support your business. We take pride in providing comprehensive support to our clients at every stage of the process, ensuring flawless execution of all operations. Our mission is to deliver high-quality services that foster your business growth and development, providing competitive advantages and sustainable growth.
+              CENTRAL ASIA BUSINESS SERVICE, founded in 2021, offers a full range of services to support your business. We take pride in providing comprehensive support to our
+              clients at every stage of the process, ensuring flawless execution of all operations. Our mission is to deliver high-quality services that foster your business growth
+              and development, providing competitive advantages and sustainable growth.
             </p>
           </div>
-          <div class="absolute bottom-0 w-full h-[500px] md:top-0 right-0 md:h-full md:w-2/5 before:bg-blue before:top-0 before:h-full before:w-full before:z-[2] before:absolute before:opacity-80 bg-[url('~/assets/images/about.jfif')] bg-cover bg-no-repeat bg-center">
-          </div>
+          <div
+            class="absolute bottom-0 w-full h-[500px] md:top-0 right-0 md:h-full md:w-2/5 before:bg-blue before:top-0 before:h-full before:w-full before:z-[2] before:absolute before:opacity-80 bg-[url('~/assets/images/about.jfif')] bg-cover bg-no-repeat bg-center"
+          ></div>
           <div class="md:col-span-4 z-10 flex md:pl-10 lg:pl-20 h-[400px] md:h-auto">
             <h2 class="uppercase text-white font-big text-xl lg:text-2xl font-extrabold mt-1 z-10">CENTRAL ASIA BUSINESS SERVICE</h2>
           </div>
@@ -84,7 +85,7 @@
       <div class="wrapper py-20">
         <h3 class="text-2xl md:text-4xl font-big uppercase font-extrabold text-center">Why choose CENTRAL ASIA BUSINESS SERVICE</h3>
         <div class="grid grid-cols-6 gap-6 items-center mt-10">
-          <div class="col-span-6 sm:col-span-3 md:col-span-2 rounded-2xl bg-grey-1 p-6">
+          <div v-for="post in data.posts" :key="post.id" class="col-span-6 sm:col-span-3 lg:col-span-2 rounded-2xl bg-grey-1 p-6">
             <div class="h-14 w-14 flex items-center justify-center bg-white rounded-lg">
               <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -98,51 +99,9 @@
                 />
               </svg>
             </div>
-            <h4 class="text-xl lg:text-2xl font-medium mt-6">Comprehensive Client Support</h4>
-            <p class="text-sm lg:text-grey-0 mt-4">
-              We accompany our clients through every stage, from unpacking and installation to customs procedures and organizing exhibitions. Our goal is to provide the most
-              comfortable conditions for your business.
-            </p>
-          </div>
-          <div class="col-span-6 sm:col-span-3 md:col-span-2 rounded-2xl bg-grey-1 p-6">
-            <div class="h-14 w-14 flex items-center justify-center bg-white rounded-lg">
-              <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  opacity="0.4"
-                  d="M0.666504 13.4375V5.4272C0.666504 4.31278 1.23718 3.29401 2.1406 2.79562L4.87373 1.28786C5.61429 0.879318 6.43089 0.666626 7.25887 0.666626H9.50046C11.1551 0.666626 12.6976 1.512 13.6984 2.92124L11.1125 6.48754C10.4791 7.36118 10.5423 8.62063 11.2593 9.41175C12.0365 10.2692 13.2965 10.2692 14.0737 9.41175L15.9606 7.32984L19.0151 13.5083C19.8508 15.1987 19.0139 17.3046 17.3208 17.7716L12.6144 19.0697C10.9182 19.5376 9.12977 19.3795 7.52274 18.6196L2.28272 16.1419C1.30223 15.6782 0.666504 14.6145 0.666504 13.4375Z"
-                  fill="#1878F3"
-                />
-                <path
-                  d="M27.333 13.7688V5.4272C27.333 4.31278 26.7623 3.29401 25.8589 2.79562L23.1258 1.28786C22.3852 0.879318 21.5686 0.666626 20.7406 0.666626H17.8963C16.2762 0.666626 14.7438 1.4792 13.7317 2.87507L11.1124 6.48754C10.4789 7.36118 10.5421 8.62063 11.2592 9.41175C12.0363 10.2692 13.2964 10.2692 14.0735 9.41175L15.9605 7.32984L19.0149 13.5083C19.5468 14.5841 19.4012 15.8282 18.7886 16.711H24.6663C26.1391 16.711 27.333 15.3937 27.333 13.7688Z"
-                  fill="#1878F3"
-                />
-              </svg>
+            <h4 class="text-xl lg:text-2xl font-medium mt-6">{{ post.title.en }}</h4>
+            <div v-html="post.descriptions.en" class="text-sm lg:text-grey-0 mt-4">
             </div>
-            <h4 class="text-xl lg:text-2xl font-medium mt-6">Comprehensive Client Support</h4>
-            <p class="text-sm lg:text-grey-0 mt-4">
-              We accompany our clients through every stage, from unpacking and installation to customs procedures and organizing exhibitions. Our goal is to provide the most
-              comfortable conditions for your business.
-            </p>
-          </div>
-          <div class="col-span-6 md:col-span-2 rounded-2xl bg-grey-1 p-6">
-            <div class="h-14 w-14 flex items-center justify-center bg-white rounded-lg">
-              <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  opacity="0.4"
-                  d="M0.666504 13.4375V5.4272C0.666504 4.31278 1.23718 3.29401 2.1406 2.79562L4.87373 1.28786C5.61429 0.879318 6.43089 0.666626 7.25887 0.666626H9.50046C11.1551 0.666626 12.6976 1.512 13.6984 2.92124L11.1125 6.48754C10.4791 7.36118 10.5423 8.62063 11.2593 9.41175C12.0365 10.2692 13.2965 10.2692 14.0737 9.41175L15.9606 7.32984L19.0151 13.5083C19.8508 15.1987 19.0139 17.3046 17.3208 17.7716L12.6144 19.0697C10.9182 19.5376 9.12977 19.3795 7.52274 18.6196L2.28272 16.1419C1.30223 15.6782 0.666504 14.6145 0.666504 13.4375Z"
-                  fill="#1878F3"
-                />
-                <path
-                  d="M27.333 13.7688V5.4272C27.333 4.31278 26.7623 3.29401 25.8589 2.79562L23.1258 1.28786C22.3852 0.879318 21.5686 0.666626 20.7406 0.666626H17.8963C16.2762 0.666626 14.7438 1.4792 13.7317 2.87507L11.1124 6.48754C10.4789 7.36118 10.5421 8.62063 11.2592 9.41175C12.0363 10.2692 13.2964 10.2692 14.0735 9.41175L15.9605 7.32984L19.0149 13.5083C19.5468 14.5841 19.4012 15.8282 18.7886 16.711H24.6663C26.1391 16.711 27.333 15.3937 27.333 13.7688Z"
-                  fill="#1878F3"
-                />
-              </svg>
-            </div>
-            <h4 class="text-xl lg:text-2xl font-medium mt-6">Comprehensive Client Support</h4>
-            <p class="text-sm lg:text-grey-0 mt-4">
-              We accompany our clients through every stage, from unpacking and installation to customs procedures and organizing exhibitions. Our goal is to provide the most
-              comfortable conditions for your business.
-            </p>
           </div>
         </div>
       </div>
@@ -167,16 +126,16 @@
         </div>
         <div class="mt-6 grid grid-cols-2 gap-6">
           <figure
-            @click="isModalOpen = true"
-            v-for="item in 8"
-            :key="item"
+            @click="serviceModal(service.id)"
+            v-for="service in data.services"
+            :key="service.id"
             class="bg-grey-1 col-span-2 sm:col-span-1 rounded-2xl p-2 group grid grid-cols-2 sm:grid-cols-10 gap-5 lg:gap-10 cursor-pointer"
           >
             <div class="sm:col-span-4 rounded-xl overflow-hidden h-[160px] lg:h-[260px]">
-              <img class="w-full h-full object-cover group-hover:scale-105 duration-200" src="~/assets/images/service.png" alt="service image" />
+              <img class="w-full h-full object-cover group-hover:scale-105 duration-200" :src="`${useRuntimeConfig().public.BASE_URL}/storage/${service.photo}`" :alt="service.title.en" />
             </div>
             <div class="sm:col-span-6 py-4 lg:py-8 pr-4 lg:pr-8 flex flex-col justify-between">
-              <figcaption class="text-base lg:text-2xl font-semibold line-clamp-3">Organisation of company presentations</figcaption>
+              <figcaption class="text-base lg:text-2xl font-semibold line-clamp-3">{{ service.title.en }}</figcaption>
               <p class="flex items-center gap-2 mt-6 text-blue duration-200"><span>Read more</span><UIcon name="i-heroicons-arrow-right" /></p>
             </div>
           </figure>
@@ -190,6 +149,7 @@
           class="mt-6"
           :modules="[SwiperAutoplay]"
           :slides-per-view="6"
+          :space-between="12"
           :loop="true"
           :speed="1000"
           :breakpoints="{
@@ -211,10 +171,10 @@
             // disableOnInteraction: true
           }"
         >
-          <SwiperSlide class="border-r border-grey-4 last:border-0" v-for="slide in 12" :key="slide">
-            <div class="h-[80px] overflow-hidden relative flex justify-center items-center">
-              <img class="object-contain" src="~/assets/images/partner.png" alt="partner" />
-            </div>
+          <SwiperSlide class="border-r border-grey-4 last:border-0" v-for="partner in data.partners" :key="partner.id">
+            <ULink :to="partner.link" target="_blank" class="h-[80px] overflow-hidden relative flex justify-center items-center">
+              <img class="object-contain" :src="`${useRuntimeConfig().public.BASE_URL}/storage/${partner.photo}`" :alt="partner.title.en" />
+            </ULink>
           </SwiperSlide>
         </Swiper>
         <Swiper
@@ -237,9 +197,9 @@
             // disableOnInteraction: true
           }"
         >
-          <SwiperSlide v-for="slide in 6" :key="slide">
+          <SwiperSlide v-for="banner in data.banners" :key="banner.id">
             <div class="rounded-2xl overflow-hidden max-h-[370px] relative flex justify-center items-center">
-              <img class="w-full h-full object-cover" src="~/assets/images/about.jfif" alt="clients" />
+              <img class="w-full h-full object-cover" :src="`${useRuntimeConfig().public.BASE_URL}/storage/${banner.photo}`" :alt="banner.title.en" />
             </div>
           </SwiperSlide>
         </Swiper>
@@ -346,7 +306,7 @@
                       placeholder="Phone number"
                       v-maska
                       data-maska="+998 (##) ###-##-##"
-                      v-model="user.phone"
+                      v-model="user.phone_number"
                       size="xl"
                       :ui="{
                         rounded: 'rounded-none',
@@ -366,7 +326,7 @@
 
                 <UFormGroup class="sm:col-span-2" name="message">
                   <UTextarea
-                    v-model="user.message"
+                    v-model="user.descriptions"
                     placeholder="Your message"
                     size="xl"
                     :ui="{
@@ -387,6 +347,8 @@
               </div>
 
               <UButton
+                :disabled="isDisabled"
+                :loading="state.loading"
                 class="mt-6 w-[200px]"
                 type="submit"
                 size="xl"
@@ -449,7 +411,7 @@
                   </div>
                 </div>
               </div>
-              <ULink to="/" class="font-black text-base lg:text-lg uppercase font-big mt-10 text-blue"> Central Asia Container Service </ULink>
+              <ULink to="/" class="font-black text-base lg:text-lg uppercase font-big mt-10 text-blue">CENTRAL ASIA BUSINESS SERVICE</ULink>
             </div>
           </div>
         </div>
@@ -459,14 +421,28 @@
 </template>
 
 <script setup>
+import { useAxios } from '~/api/index';
+
+const { data } = await useAsyncData('home', async () => {
+  const [translations, posts, banners, partners, services] = await Promise.all([
+    useAxios().getRequest('/api/translations'),
+    useAxios().getRequest('/api/posts'),
+    useAxios().getRequest('/api/banners'),
+    useAxios().getRequest('/api/partners'),
+    useAxios().getRequest('/api/services')
+  ]);
+
+  return {translations, posts, banners, partners, services}
+});
+
 useHead(() => {
   return {
-    title: 'Central Asia Container Service',
+    title: 'Central Asia Business Service',
     meta: [
       {
         hid: 'description',
         name: 'description',
-        content: 'Central Asia Container Service'
+        content: 'CENTRAL ASIA BUSINESS SERVICE'
       }
     ]
   };
@@ -474,35 +450,48 @@ useHead(() => {
 
 // dynamic datas
 const isModalOpen = ref(false);
+const service = ref(null);
 
 const state = reactive({
   errors: [],
   loading: false
 });
+
 const user = reactive({
   first_name: '',
   last_name: '',
   company: '',
   email: '',
-  phone: '',
-  message: ''
+  phone_number: '',
+  descriptions: ''
 });
+
+const isDisabled = computed(() => {
+  return state.loading || validate().length > 0;
+});
+
+function serviceModal(id) {
+  service.value = data.value.services.find((service) => service.id === id);
+  isModalOpen.value = true;
+}
 
 async function submitMessage() {
   state.loading = true;
   try {
-    alert('hello');
-    // let res = await useServices().postServices('/application/create', {
-    //   ...user
-    // });
-    // if (res.status === 201) {
-    //   state.errors = [];
-    //   user.name = '';
-    //   user.phone = '';
-    //   user.message = '';
-    // } else {
-    //   state.errors = [{ path: 'form', message: 'Something went wrong' }];
-    // }
+    let res = await useAxios().postRequest('/api/zayavkas', {
+      ...user
+    });
+    if (res.status === 201) {
+      user.first_name = '';
+      user.last_name = '';
+      user.company = '';
+      user.email = '';
+      user.phone_number = '';
+      user.descriptions = '';
+      state.errors = [];
+    } else {
+      state.errors = [{ path: 'form', message: 'Something went wrong' }];
+    }
   } catch {
     state.errors = [{ path: 'form', message: 'Something went wrong' }];
   } finally {
@@ -512,16 +501,16 @@ async function submitMessage() {
 
 function validate() {
   const errors = [];
-  if (!user.phone || user.phone.length < 19)
+  if (!user.phone_number || user.phone_number.length < 19)
     errors.push({
       path: 'phone',
-      message: user.phone.length < 19 && user.phone.length > 0 ? 'Phone number should be full' : 'Phone number can not be blank'
+      message: user.phone_number.length < 19 && user.phone_number.length > 0 ? 'Phone number should be full' : 'Phone number can not be blank'
     });
   if (!user.first_name) errors.push({ path: 'first_name', message: 'First Name can not be blank' });
   if (!user.last_name) errors.push({ path: 'last_name', message: 'Last name can not be blank' });
   if (!user.company) errors.push({ path: 'company', message: 'Company can not be blank' });
   if (!user.email) errors.push({ path: 'email', message: 'Email can not be blank' });
-  if (!user.message) errors.push({ path: 'message', message: 'Message can not be blank' });
+  if (!user.descriptions) errors.push({ path: 'message', message: 'Message can not be blank' });
 
   return errors;
 }

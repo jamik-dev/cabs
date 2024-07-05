@@ -6,6 +6,10 @@
 @tailwind utilities;
 
 /* Custom styles here */
+html, body {
+  scrollbar-gutter: stable;
+}
+
 html {
   scroll-behavior: smooth;
 }
