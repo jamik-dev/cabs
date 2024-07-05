@@ -2,7 +2,7 @@
   <header id="header" :class="[screenScrolled ? 'bg-white text-black' : 'bg-transparent text-white']" class="fixed top-0 z-[20] backdrop-blur-2xl w-full duration-200">
     <div class="wrapper flex sm:flex-col gap-y-4 lg:flex-row sm:items-center justify-between py-4 sm:py-8">
       <div class="flex items-center gap-6">
-        <ULink @click="isMenuOpen = false" to="/" class="font-black :text-base lg:text-xl uppercase font-big shrink-0">CENTRAL ASIA BUSINESS SERVICE</ULink>
+        <ULink @click="isMenuOpen = false" to="/" class="font-black :text-base lg:text-xl uppercase font-big shrink-0">{{ translations['logo.title'] }}</ULink>
         <div class="w-[1px] hidden lg:block bg-grey-4 h-6 shrink-0"></div>
         <nav class="hidden sm:block">
           <ul class="flex items-center gap-10">
@@ -14,13 +14,13 @@
       </div>
       <div class="hidden sm:flex items-center gap-6">
         <div class="space-y-1">
-          <p class="text-sm hidden lg:block">E-mail</p>
-          <a class="font-medium" href="mailto:info@cabs.hk" target="_blank">info@cabs.hk</a>
+          <p class="text-sm hidden lg:block">{{ translations['contact.email_title'] }}</p>
+          <a class="font-medium" :href="`mailto:${translations['contact.email_1']}`" target="_blank">{{ translations['contact.email_1'] }}</a>
         </div>
         <div class="w-[1px] bg-grey-4 h-6 lg:h-10"></div>
         <div class="space-y-1">
-          <p class="text-sm hidden lg:block">E-mail</p>
-          <a class="font-medium" href="mailto:projects@cabs.hk" target="_blank">projects@cabs.hk</a>
+          <p class="text-sm hidden lg:block">{{ translations['contact.email_title'] }}</p>
+          <a class="font-medium" :href="`mailto:${translations['contact.email_2']}`" target="_blank">{{ translations['contact.email_2'] }}</a>
         </div>
       </div>
       <div class="sm:hidden">
@@ -52,9 +52,9 @@
       </nav>
       <div class="mt-20">
         <div class="space-y-1 text-center">
-          <p class="text-grey-0 text-sm">E-mail</p>
-          <a class="font-medium block" href="mailto:info@cabs.hk" target="_blank">info@cabs.hk</a>
-          <a class="font-medium block" href="mailto:projects@cabs.hk" target="_blank">projects@cabs.hk</a>
+          <p class="text-grey-0 text-sm">{{ translations['contact.email_title'] }}</p>
+          <a class="font-medium block" :href="`mailto:${translations['contact.email_1']}`" target="_blank">{{ translations['contact.email_1'] }}</a>
+          <a class="font-medium block" :href="`mailto:${translations['contact.email_2']}`" target="_blank">{{ translations['contact.email_2'] }}</a>
         </div>
       </div>
     </div>
@@ -62,6 +62,7 @@
 </template>
 
 <script setup>
+defineProps(['translations']);
 const isMenuOpen = ref(false);
 const screenScrolled = ref(false);
 

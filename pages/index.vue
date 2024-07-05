@@ -31,8 +31,8 @@
         </div>
         <div class="p-5 md:p-10 bg-blue text-white rounded-lg flex flex-col gap-y-4 sm:flex-row justify-between sm:items-center">
           <div class="space-y-2">
-            <h4 class="text-lg md:text-4xl font-semibold uppercase font-big">Get advice from a manager</h4>
-            <p class="text-sm md:text-base sm:max-w-[80%] md:max-w-[70%]">Need more details? Discuss requirements? We will help you find the right solution</p>
+            <h4 class="text-lg md:text-4xl font-semibold uppercase font-big">{{ data.translations['main.manager_title'] }}</h4>
+            <p class="text-sm md:text-base sm:max-w-[80%] md:max-w-[70%]">{{ data.translations['main.manager_subtitle'] }}</p>
           </div>
           <UButton
             @click="isModalOpen = false"
@@ -41,7 +41,7 @@
             size="xl"
             color="white"
             variant="solid"
-            label="Получить консультацию"
+            :label="data.translations['main.get_consulatation']"
             trailingIcon="i-heroicons-arrow-right"
             :ui="{ font: 'font-normal', size: { xl: 'text-sm' }, icon: { size: { xl: 'h-4 w-4' } }, rounded: 'rounded-lg' }"
           />
@@ -53,9 +53,9 @@
         class="flex items-center justify-center min-h-screen bg-[url('~/assets/images/hero.png')] bg-no-repeat bg-center bg-cover relative before:absolute before:pointer-events-none before:left-0 before:top-0 before:h-full before:w-full before:z-1 before:bg-black before:opacity-50"
       >
         <div class="flex flex-col gap-6 z-[2]">
-          <p @click="isMenuOpen = false" to="/" class="font-black text-center text-white text-base lg:text-xl uppercase font-big shrink-0">CENTRAL ASIA BUSINESS SERVICE</p>
+          <p @click="isMenuOpen = false" to="/" class="font-black text-center text-white text-base lg:text-xl uppercase font-big shrink-0">{{ data.translations['logo.title'] }}</p>
           <h1 class="text-white text-center text-4xl md:text-6xl xl:text-[80px] max-w-[90%] md:max-w-[80%] lg:max-w-[60%] mx-auto font-big font-extrabold uppercase leading-[120%]">
-            We offer a full range of services to support your business
+            {{ data.translations['main.hero_title'] }}
           </h1>
         </div>
       </div>
@@ -65,18 +65,16 @@
         <div class="wrapper grid grid-cols-1 md:grid-cols-10 gap-y-20 gap-x-10 py-20">
           <div class="md:col-span-6 items-center">
             <p>About company</p>
-            <h2 class="uppercase font-big text-xl lg:text-3xl font-extrabold mt-1">CENTRAL ASIA BUSINESS SERVICE</h2>
+            <h2 class="uppercase font-big text-xl lg:text-3xl font-extrabold mt-1">{{ data.translations['main.about_title'] }}</h2>
             <p class="text-base lg:text-xl mt-6 text-grey-0">
-              CENTRAL ASIA BUSINESS SERVICE, founded in 2021, offers a full range of services to support your business. We take pride in providing comprehensive support to our
-              clients at every stage of the process, ensuring flawless execution of all operations. Our mission is to deliver high-quality services that foster your business growth
-              and development, providing competitive advantages and sustainable growth.
+              {{ data.translations['main.about_description'] }}
             </p>
           </div>
           <div
             class="absolute bottom-0 w-full h-[500px] md:top-0 right-0 md:h-full md:w-2/5 before:bg-blue before:top-0 before:h-full before:w-full before:z-[2] before:absolute before:opacity-80 bg-[url('~/assets/images/about.jfif')] bg-cover bg-no-repeat bg-center"
           ></div>
           <div class="md:col-span-4 z-10 flex md:pl-10 lg:pl-20 h-[400px] md:h-auto">
-            <h2 class="uppercase text-white font-big text-xl lg:text-2xl font-extrabold mt-1 z-10">CENTRAL ASIA BUSINESS SERVICE</h2>
+            <h2 class="uppercase text-white font-big text-xl lg:text-2xl font-extrabold mt-1 z-10">{{ data.translations['logo.title'] }}</h2>
           </div>
         </div>
       </div>
@@ -84,7 +82,7 @@
     <section id="choose">
       <div class="wrapper py-20">
         <h3 class="text-2xl md:text-4xl font-big uppercase font-extrabold text-center">Why choose CENTRAL ASIA BUSINESS SERVICE</h3>
-        <div class="grid grid-cols-6 gap-6 items-center mt-10">
+        <div class="grid grid-cols-6 gap-6 mt-10">
           <div v-for="post in data.posts" :key="post.id" class="col-span-6 sm:col-span-3 lg:col-span-2 rounded-2xl bg-grey-1 p-6">
             <div class="h-14 w-14 flex items-center justify-center bg-white rounded-lg">
               <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -107,12 +105,12 @@
       </div>
       <div class="mt-6 wrapper bg-blue text-white py-7 sm:py-14 px-5 sm:px-20 rounded-2xl flex flex-col gap-y-10 md:flex-row justify-between items-center">
         <div class="space-y-2">
-          <h2 class="text-2xl lg:text-4xl font-semibold font-big uppercase text-center md:text-start">For more information contact us!</h2>
-          <p class="text-center md:text-start">Biz ijtimoiy tarmoqlardamiz</p>
+          <h2 class="text-2xl lg:text-4xl font-semibold font-big uppercase text-center md:text-start">{{ data.translations['contact.contact_us'] }}</h2>
+          <p class="text-center md:text-start">{{ data.translations['contact.socials'] }}</p>
         </div>
         <div class="flex flex-col sm:flex-row gap-y-4 gap-x-10">
-          <ULink class="text-xl lg:text-2xl font-medium text-center md:text-start" to="mailto:info@cabs.hk">info@cabs.hk</ULink>
-          <ULink class="text-xl lg:text-2xl font-medium text-center md:text-start" to="tel:+87848455221">+8 784 845 52 21</ULink>
+          <ULink class="text-xl lg:text-2xl font-medium text-center md:text-start" :to="`mailto:${data.translations['contact.email_1']}`">{{ data.translations['contact.email_1'] }}</ULink>
+          <ULink class="text-xl lg:text-2xl font-medium text-center md:text-start" :to="`tel:${data.translations['contact.phone']}`">{{ data.translations['contact.phone'] }}</ULink>
         </div>
       </div>
     </section>
@@ -121,7 +119,7 @@
         <div class="flex flex-col gap-4">
           <h3 class="text-2xl text-center md:text-4xl font-big uppercase font-extrabold">Services</h3>
           <p class="mx-auto md:max-w-[50%] text-center text-grey-0">
-            The company offers a wide range of services aimed at meeting the logistics, training, and technical support needs of our clients.
+            {{data.translations['main.services_subtitle']}}
           </p>
         </div>
         <div class="mt-6 grid grid-cols-2 gap-6">
@@ -149,8 +147,8 @@
           class="mt-6"
           :modules="[SwiperAutoplay]"
           :slides-per-view="6"
-          :space-between="12"
           :loop="true"
+          :space-between="12"
           :speed="1000"
           :breakpoints="{
             0: {
@@ -198,7 +196,7 @@
           }"
         >
           <SwiperSlide v-for="banner in data.banners" :key="banner.id">
-            <div class="rounded-2xl overflow-hidden max-h-[370px] relative flex justify-center items-center">
+            <div class="rounded-2xl overflow-hidden h-[370px] relative flex justify-center items-center">
               <img class="w-full h-full object-cover" :src="`${useRuntimeConfig().public.BASE_URL}/storage/${banner.photo}`" :alt="banner.title.en" />
             </div>
           </SwiperSlide>
@@ -226,7 +224,7 @@
                       placeholder: 'text-grey-0',
                       color: {
                         white: {
-                          outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-blue bg-transparent'
+                          outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-red bg-transparent'
                         }
                       }
                     }"
@@ -248,7 +246,7 @@
                       placeholder: 'text-grey-0',
                       color: {
                         white: {
-                          outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-blue bg-transparent'
+                          outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-red bg-transparent'
                         }
                       }
                     }"
@@ -270,7 +268,7 @@
                       placeholder: 'text-grey-0',
                       color: {
                         white: {
-                          outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-blue bg-transparent'
+                          outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-red bg-transparent'
                         }
                       }
                     }"
@@ -292,7 +290,7 @@
                       placeholder: 'text-grey-0',
                       color: {
                         white: {
-                          outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-blue bg-transparent'
+                          outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-red bg-transparent'
                         }
                       }
                     }"
@@ -316,7 +314,7 @@
                         placeholder: 'text-grey-0',
                         color: {
                           white: {
-                            outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-blue bg-transparent'
+                            outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-red bg-transparent'
                           }
                         }
                       }"
@@ -338,7 +336,7 @@
                       placeholder: 'text-grey-0',
                       color: {
                         white: {
-                          outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-blue bg-transparent'
+                          outline: 'shadow-none ring-0 focus:border-b-2 focus:ring-0 border-b border-grey-2 focus:border-red bg-transparent'
                         }
                       }
                     }"
@@ -354,7 +352,7 @@
                 size="xl"
                 color="primary"
                 variant="solid"
-                label="Send"
+                :label="data.translations['contact.send']"
                 trailingIcon="i-heroicons-arrow-right"
                 :ui="{ base: 'justify-center', font: 'font-normal', size: { xl: 'text-sm' }, icon: { size: { xl: 'h-4 w-4' } } }"
               />
@@ -362,24 +360,24 @@
             <div class="bg-white rounded-2xl p-6 flex flex-col justify-between">
               <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div class="space-y-4">
-                  <p class="text-grey-3">Adress</p>
-                  <p>18/F., on Hong Commercial Building 145 Hennessy Road, Wanchai HONG KONG</p>
+                  <p class="text-grey-3">{{ data.translations['contact.address_title'] }}</p>
+                  <p>{{ data.translations['contact.address'] }}</p>
                 </div>
                 <div class="space-y-4">
-                  <p class="text-grey-3">Всего здесь для вас</p>
-                  <p>Горячая линия обслуживания 24/7</p>
+                  <p class="text-grey-3">{{ data.translations['contact.work_title'] }}</p>
+                  <p>{{ data.translations['contact.work_time'] }}</p>
                 </div>
                 <div class="space-y-4">
-                  <p class="text-grey-3">E-mail</p>
+                  <p class="text-grey-3">{{ data.translations['contact.email_title'] }}</p>
                   <div class="flex flex-col xl:flex-row gap-x-4 gap-y-1">
-                    <ULink class="hover:text-blue duration-200" target="_blank" to="mailto:info@cabs.hk">info@cabs.hk</ULink>
-                    <ULink class="hover:text-blue duration-200" target="_blank" to="mailto:projects@cabs.hk">projects@cabs.hk</ULink>
+                    <ULink class="hover:text-red duration-200" target="_blank" :to="`mailto:${data.translations['contact.email_1']}`">{{ data.translations['contact.email_1'] }}</ULink>
+                    <ULink class="hover:text-red duration-200" target="_blank" :to="`mailto:${data.translations['contact.email_2']}`">{{ data.translations['contact.email_2'] }}</ULink>
                   </div>
                 </div>
                 <div class="space-y-4">
-                  <p class="text-grey-3">Соц, сеть</p>
+                  <p class="text-grey-3">{{ data.translations['contact.social_title'] }}</p>
                   <div class="flex gap-2">
-                    <ULink to="https://facebook.com" target="_blank"
+                    <ULink :to="data.translations['contact.facebook']" target="_blank"
                       ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <circle cx="16" cy="16" r="14" fill="url(#paint0_linear_23_633)" />
                         <path
@@ -394,7 +392,7 @@
                         </defs>
                       </svg>
                     </ULink>
-                    <ULink to="https://linkedin.com" target="_blank"
+                    <ULink :to="data.translations['contact.linkedin']" target="_blank"
                       ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <rect x="2" y="2" width="28" height="28" rx="14" fill="#1275B1" />
                         <path
@@ -411,7 +409,7 @@
                   </div>
                 </div>
               </div>
-              <ULink to="/" class="font-black text-base lg:text-lg uppercase font-big mt-10 text-blue">CENTRAL ASIA BUSINESS SERVICE</ULink>
+              <ULink to="/" class="font-black text-base lg:text-lg uppercase font-big mt-10 text-blue">{{ data.translations['logo.title'] }}</ULink>
             </div>
           </div>
         </div>
