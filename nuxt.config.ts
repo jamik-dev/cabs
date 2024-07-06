@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      BASE_URL: process.env.API_BASE_URL
+      BASE_URL: process.env.API_BASE_URL || 'https://admin.verel-auto.uz'
     },
   },
 
