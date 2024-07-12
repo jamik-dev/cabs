@@ -71,7 +71,7 @@
             </p>
           </div>
           <div
-            class="absolute bottom-0 w-full h-[500px] md:top-0 right-0 md:h-full md:w-2/5 before:bg-blue before:top-0 before:h-full before:w-full before:z-[2] before:absolute before:opacity-80 bg-[url('~/assets/images/about.jfif')] bg-cover bg-no-repeat bg-center"
+            class="absolute bottom-0 w-full h-[500px] md:top-0 right-0 md:h-full md:w-2/5 before:bg-blue before:top-0 before:h-full before:w-full before:z-[2] before:absolute before:opacity-80 bg-[url('~/assets/images/about-2.jpg')] bg-cover bg-no-repeat bg-center"
           ></div>
           <div class="md:col-span-4 z-10 flex md:pl-10 lg:pl-20 h-[400px] md:h-auto">
             <h2 class="uppercase text-white font-big text-xl lg:text-2xl font-extrabold mt-1 z-10">{{ data.translations['logo.title'] }}</h2>
@@ -140,7 +140,7 @@
         </div>
       </div>
     </section>
-    <section id="clients">
+    <!-- <section id="clients">
       <div class="wrapper">
         <h3 class="text-2xl md:text-4xl font-big uppercase font-extrabold text-center">Our clients and partners</h3>
         <Swiper
@@ -202,7 +202,7 @@
           </SwiperSlide>
         </Swiper>
       </div>
-    </section>
+    </section> -->
     <section id="contacts">
       <div class="wrapper py-20">
         <div class="p-4 sm:p-7 md:p-14 rounded-3xl bg-grey-1">
@@ -374,7 +374,7 @@
                     <ULink class="hover:text-red duration-200" target="_blank" :to="`mailto:${data.translations['contact.email_2']}`">{{ data.translations['contact.email_2'] }}</ULink>
                   </div>
                 </div>
-                <div class="space-y-4">
+                <!-- <div class="space-y-4">
                   <p class="text-grey-3">{{ data.translations['contact.social_title'] }}</p>
                   <div class="flex gap-2">
                     <ULink :to="data.translations['contact.facebook']" target="_blank"
@@ -407,7 +407,7 @@
                       </svg>
                     </ULink>
                   </div>
-                </div>
+                </div> -->
               </div>
               <ULink to="/" class="font-black text-base lg:text-lg uppercase font-big mt-10 text-blue">{{ data.translations['logo.title'] }}</ULink>
             </div>
