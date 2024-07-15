@@ -21,7 +21,7 @@
             @click="isModalOpen = false"
           />
         </div>
-        <div class="h-[300px] sm:h-[400px] md:h-[525px] overflow-hidden rounded-lg">
+        <div class="h-[300px] sm:h-[400px] md:h-[350px] overflow-hidden rounded-lg">
           <img class="w-full h-full object-cover" :src="`${useRuntimeConfig().public.BASE_URL}/storage/${service.photo}`" :alt="service.title.en" />
         </div>
         <div class="space-y-4">
